@@ -23,7 +23,7 @@ function Main() {
   // Function to get filtered list
   function getFilteredList() {
     // Avoid filter when selectedCategory is null
-    if (!selectedCategory ) {
+    if (!selectedCategory || selectedCategory=='All') {
       return Milk;
     }
     return Milk.filter((item) => item.type === selectedCategory);
@@ -41,7 +41,8 @@ function Main() {
   return (
     <>
       <div>Filter by Category:</div>
-      {/* All,Cashew milk,Pea milk,Walnut milk,Rice milk,Coconut milk,Soy milk,Hemp milk,Almond milk,Oat milk,Macadamia milk,Whole milk */}
+      {/* All,Cashew milk,Pea milk,Walnut milk,Rice milk,Coconut milk,
+      Soy milk,Hemp milk,Almond milk,Oat milk,Macadamia milk,Whole milk */}
       <div>
         <select
           name="category-list"
@@ -53,7 +54,6 @@ function Main() {
           ))}
         </select>
       </div>
-      <div>"👀"+{selectedCategory}</div>
       <div className="container d-flex flex-wrap justify-content-center">
         {filteredList &&
           filteredList.length > 0 &&
