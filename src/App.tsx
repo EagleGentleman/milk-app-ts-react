@@ -1,16 +1,17 @@
 import "./App.css";
-import FilterDropDown from "./components/FilterDropDown";
 import Main from "./components/Main";
 import NavigationBar from "./components/NavigationBar";
-import SearchPanel from "./components/SearchPanel";
-import SubNavbar from "./components/SubNavbar";
+import { Route, Routes } from "react-router-dom";
+import MilksDetail from "./components/milkDetails/MilksDetail";
 
 function App() {
   return (
     <div className="App">
       <NavigationBar></NavigationBar>
-      <SubNavbar></SubNavbar>
-      <Main></Main>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/milk-details/:id" element={<MilksDetail />} />
+      </Routes>
     </div>
   );
 }
