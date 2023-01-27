@@ -84,7 +84,7 @@ function MilksDetail() {
                   onChange={changeValue}
                   max={Milk?.storage}
                 />
-                <p>Order Quantity: {value1}liter</p>
+                <p>Order Quantity: {value1} liter</p>
                 <Button variant="primary" type="submit">
                   Order
                 </Button>
@@ -95,7 +95,7 @@ function MilksDetail() {
         {isValid ? (
           <Alert variant="success">
             <Alert.Heading>Thank you!</Alert.Heading>
-             {value1}liters {Milk?.type} order has been placed.
+             {value1} liters {Milk?.type} order has been placed.
           </Alert>
         ) : null
         // <Alert variant="danger">Oops! Try again</Alert>

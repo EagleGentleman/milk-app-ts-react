@@ -1,23 +1,18 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Background
+A small local milk shop needs your help desperately. Lately they started getting a lot of business, and they feel that they need a proper website to take a load off their store. The milk at this store is sold by the liter, and if you thought there was only one type of milk you are waay off! There will be several different types of milk, and you need to make sure that the customer can easily find the type they want! The requirements won’t tell you everything, some parts you need to figure out yourself
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start` and ./milkApi 'dotnet run'
 
+Runs API in swagger 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 

@@ -6,20 +6,29 @@ import milk from "../milk.png";
 import axios from "axios";
 import { Navbar, Container, Form, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import milkData from "../milk.json";
 
 function Main() {
-  const [Milk, setMilk] = useState<IMilk[]>([]);
+  const [Milk, setMilk] = useState<IMilk[]>(milkData.results);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   const [search, setSearch]: [string, (search: string) => void] =
     React.useState("");
 
   useEffect(() => {
-    axios.get("https://localhost:7028/api/Milk").then((response) => {
-      setMilk((data) => {
-        return response.data;
+    axios
+      .get("https://localhost:7028/api/Milk")
+      .then((response) => {
+        setMilk((data) => {
+          return response.data;
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          // setMilk(milkData.results);
+          console.log(error.response.data);
+        }
       });
-    });
   }, []);
   const navigate = useNavigate();
   let options = new Array("All");
@@ -45,8 +54,6 @@ function Main() {
 
   return (
     <>
-      {/* All,Cashew milk,Pea milk,Walnut milk,Rice milk,Coconut milk,
-      Soy milk,Hemp milk,Almond milk,Oat milk,Macadamia milk,Whole milk */}
       <Navbar expand="lg">
         <Container fluid style={{ marginRight: "6rem", marginLeft: "6rem" }}>
           <div>
@@ -80,7 +87,8 @@ function Main() {
               item.name.toLowerCase().includes(search.toLowerCase())
             ) {
               return (
-                <Card className="milk__card"
+                <Card
+                  className="milk__card"
                   onClick={() => navigate(`/milk-details/${item.id}`)}
                   style={{
                     width: "20rem",
@@ -90,19 +98,14 @@ function Main() {
                     cursor: "pointer",
                   }}
                 >
-                  <Card.Img
-                    variant="top"
-                    src={milk}
-                    // style={{ width: "60%", marginLeft: "3rem" }}
-                  />
+                  <Card.Img variant="top" src={milk} />
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
                       {item.type}
                     </Card.Subtitle>
-                    <Card.Text>{item.storage}liters</Card.Text>
+                    <Card.Text>{item.storage} liters</Card.Text>
                   </Card.Body>
-        
                 </Card>
               );
             }
